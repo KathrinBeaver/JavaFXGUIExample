@@ -16,7 +16,7 @@ public class Main extends Application {
 //        Label helloWorldLabel = new Label("Label on custom scene!");
 //        helloWorldLabel.setAlignment(Pos.CENTER);
 //        Scene primaryScene = new Scene(helloWorldLabel);
-//        primaryStage.setScene(primaryScene)
+//        primaryStage.setScene(primaryScene);
 
 //        Group root = new FiguresGroup();
 //        Group root = new ElementsGroup();
