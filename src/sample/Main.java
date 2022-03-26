@@ -1,14 +1,10 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.components.ElementsFlowPane;
-import sample.components.ElementsGridPane;
-import sample.components.ElementsGroup;
-import sample.components.FiguresGroup;
 
 public class Main extends Application {
 
@@ -23,9 +19,9 @@ public class Main extends Application {
 //        primaryStage.setScene(primaryScene);
 
 //        Group root = new FiguresGroup();
-        Group root = new ElementsGroup();
+//        Group root = new ElementsGroup();
 //        Pane root = new ElementsGridPane();
-//        Pane root = new ElementsFlowPane();
+        Pane root = new ElementsFlowPane();
         primaryStage.setScene(new Scene(root, 300, 275));
 
         primaryStage.show();

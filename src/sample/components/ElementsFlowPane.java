@@ -8,17 +8,23 @@ import javafx.scene.layout.FlowPane;
 
 public class ElementsFlowPane extends FlowPane {
 
-    protected final int SIZE = 10;
+    protected final int SIZE = 5;
 
     public ElementsFlowPane() {
         fillContent();
     }
 
     private void fillContent() {
-        Label resultLabel = new Label("кнопка не нажата. ");
+
+        Label resultLabel = new Label("Button not pressed");
         this.getChildren().add(resultLabel);
 
-        EventHandler<ActionEvent> event = e -> resultLabel.setText("кнопка нажата! ");
+        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e)
+            {
+                resultLabel.setText("Button PRESS");
+            }
+        };
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++){
@@ -27,5 +33,7 @@ public class ElementsFlowPane extends FlowPane {
                 button.setOnAction(event);
             }
         }
+
     }
+
 }
