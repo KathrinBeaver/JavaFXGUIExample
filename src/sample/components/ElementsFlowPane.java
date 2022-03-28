@@ -8,7 +8,7 @@ import javafx.scene.layout.FlowPane;
 
 public class ElementsFlowPane extends FlowPane {
 
-    protected final int SIZE = 5;
+    protected final int SIZE = 10;
 
     public ElementsFlowPane() {
         fillContent();
