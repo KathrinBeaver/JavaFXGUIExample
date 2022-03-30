@@ -11,7 +11,7 @@ public class ElementsGroup extends Group {
     }
 
     private void fillContent() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             this.getChildren().add(new Label("Label " + (i +1)));
             this.getChildren().add(new Button("Button " + (i +1)));
         }
