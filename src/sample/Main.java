@@ -1,14 +1,7 @@
 package sample;
 
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+
 import sample.components.ElementsFlowPane;
-import sample.components.ElementsGridPane;
-import sample.components.ElementsGroup;
-import sample.components.FiguresGroup;
 
 public class Main extends Application {
 
