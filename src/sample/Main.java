@@ -13,6 +13,7 @@ public class Main extends Application {
         primaryStage.setTitle("GUIMainForm");
 
         Pane root = new ElementsFlowPane();
+
         primaryStage.setScene(new Scene(root, 600, 550));
 
         primaryStage.show();
