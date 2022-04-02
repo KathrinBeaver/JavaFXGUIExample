@@ -22,7 +22,7 @@ public class FiguresGroup extends Group {
         context.fillOval(10, 20, 50, 50); // рисуем овал с левым верхним углом в точке (10;20) и высотой = ширине = 50px
 
         context.setFill(Color.GREEN);
-        context.fillRect(200, 50, 60, 90); // рисуем прямоугольник 60x90px с левым верхим углом в точке (200; 50)
+        context.fillRect(100, 25, 60, 90); // рисуем прямоугольник 60x90px с левым верхим углом в точке (200; 50)
 
         context.setFill(Color.CRIMSON);
         context.fillPolygon(
