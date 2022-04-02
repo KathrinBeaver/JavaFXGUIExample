@@ -1,12 +1,10 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.components.ElementsFlowPane;
-
 
 public class Main extends Application {
 
@@ -15,7 +13,8 @@ public class Main extends Application {
         primaryStage.setTitle("GUIMainForm");
 
         Pane root = new ElementsFlowPane();
-        primaryStage.setScene(new Scene(root, 500, 500));
+
+        primaryStage.setScene(new Scene(root, 600, 550));
 
         primaryStage.show();
     }

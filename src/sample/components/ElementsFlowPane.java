@@ -15,16 +15,10 @@ public class ElementsFlowPane extends FlowPane {
     }
 
     private void fillContent() {
-
-        Label resultLabel = new Label("Button not pressed");
+        Label resultLabel = new Label("кнопка не нажата. ");
         this.getChildren().add(resultLabel);
 
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e)
-            {
-                resultLabel.setText("Button PRESS");
-            }
-        };
+        EventHandler<ActionEvent> event = e -> resultLabel.setText("кнопка нажата! ");
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++){
@@ -33,7 +27,5 @@ public class ElementsFlowPane extends FlowPane {
                 button.setOnAction(event);
             }
         }
-
     }
-
 }
