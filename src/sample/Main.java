@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.components.ElementsFlowPane;
+import sample.components.ElementsGridPane;
 
 public class Main extends Application {
 
@@ -21,7 +22,7 @@ public class Main extends Application {
 //        Group root = new FiguresGroup();
 //        Group root = new ElementsGroup();
 //        Pane root = new ElementsGridPane();
-        Pane root = new ElementsFlowPane();
+        Pane root = new ElementsGridPane();
         primaryStage.setScene(new Scene(root, 300, 275));
 
         primaryStage.show();
