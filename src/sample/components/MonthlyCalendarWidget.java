@@ -11,17 +11,18 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class CalendarWidget extends GridPane {
+public class MonthlyCalendarWidget extends GridPane {
     private final int year;
     private final String month;
     private final double sizeX;
     private final double sizeY;
     private final String[] weekDays;
 
-    public CalendarWidget() {
+    public MonthlyCalendarWidget() {
         Calendar calendar = Calendar.getInstance();
 
         this.year = calendar.get(Calendar.YEAR);
@@ -33,7 +34,7 @@ public class CalendarWidget extends GridPane {
         init();
     }
 
-    public CalendarWidget(boolean isRu) {
+    public MonthlyCalendarWidget(boolean isRu) {
         Calendar calendar = Calendar.getInstance();
 
         this.year = calendar.get(Calendar.YEAR);
@@ -46,7 +47,7 @@ public class CalendarWidget extends GridPane {
         init();
     }
 
-    public CalendarWidget(int year, String month) {
+    public MonthlyCalendarWidget(int year, String month) {
         this.year = year;
         this.month = month;
         this.sizeX = 300;
@@ -56,7 +57,7 @@ public class CalendarWidget extends GridPane {
         init();
     }
 
-    public CalendarWidget(int year, String month, boolean isRu) {
+    public MonthlyCalendarWidget(int year, String month, boolean isRu) {
         this.year = year;
         this.month = month;
         this.sizeX = 300;
@@ -67,7 +68,7 @@ public class CalendarWidget extends GridPane {
         init();
     }
 
-    public CalendarWidget(int year, String month, double sizeX) {
+    public MonthlyCalendarWidget(int year, String month, double sizeX) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -77,7 +78,7 @@ public class CalendarWidget extends GridPane {
         init();
     }
 
-    public CalendarWidget(int year, String month, double sizeX, boolean isRu) {
+    public MonthlyCalendarWidget(int year, String month, double sizeX, boolean isRu) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -88,7 +89,7 @@ public class CalendarWidget extends GridPane {
         init();
     }
 
-    public CalendarWidget(int year, String month, double sizeX, double sizeY) {
+    public MonthlyCalendarWidget(int year, String month, double sizeX, double sizeY) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -98,7 +99,7 @@ public class CalendarWidget extends GridPane {
         init();
     }
 
-    public CalendarWidget(int year, String month, double sizeX, double sizeY, boolean isRu) {
+    public MonthlyCalendarWidget(int year, String month, double sizeX, double sizeY, boolean isRu) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -110,27 +111,25 @@ public class CalendarWidget extends GridPane {
     }
 
     private void init() {
-        this.setPrefSize(sizeX, sizeY);
+        String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        ArrayList<Button> buttonArrayList = new ArrayList<>();
 
         Calendar calendar = Calendar.getInstance();
-        switch (month) {
-            case "January" -> calendar.set(year, Calendar.JANUARY, 1);
-            case "February" -> calendar.set(year, Calendar.FEBRUARY, 1);
-            case "March" -> calendar.set(year, Calendar.MARCH, 1);
-            case "April" -> calendar.set(year, Calendar.APRIL, 1);
-            case "May" -> calendar.set(year, Calendar.MAY, 1);
-            case "June" -> calendar.set(year, Calendar.JUNE, 1);
-            case "July" -> calendar.set(year, Calendar.JULY, 1);
-            case "August" -> calendar.set(year, Calendar.AUGUST, 1);
-            case "September" -> calendar.set(year, Calendar.SEPTEMBER, 1);
-            case "October" -> calendar.set(year, Calendar.OCTOBER, 1);
-            case "November" -> calendar.set(year, Calendar.NOVEMBER, 1);
-            case "December" -> calendar.set(year, Calendar.DECEMBER, 1);
-        }
+        calendar.set(year, Arrays.asList(months).indexOf(month), 1);
+        int daysAmount = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+        int start = weekDay == 1 ? weekDay + 4 : weekDay - 3;
+
+        calendar = Calendar.getInstance();
+        int day = year == calendar.get(Calendar.YEAR) &&
+                month == calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("en")) ?
+                calendar.get(Calendar.DAY_OF_MONTH) : -2;
+
+        this.setPrefSize(sizeX, sizeY);
 
         for (int i = 0; i < weekDays.length; ++i) {
             Label label = new Label(weekDays[i]);
-            label.setFont(Font.font("Verdana", FontWeight.BOLD, sizeX / 25));
+            label.setFont(Font.font("Verdana", FontWeight.BOLD, sizeX / 20));
             label.setTextFill(i > 4 ? Color.RED : Color.BLACK);
             label.setAlignment(Pos.CENTER);
             label.setPrefSize(sizeX / 7, sizeY / 7);
@@ -138,12 +137,10 @@ public class CalendarWidget extends GridPane {
             this.add(label, i, 0);
         }
 
-        ArrayList<Button> buttonArrayList = new ArrayList<>();
-
         for (int i = 0; i < 6; ++i) {
             for (int j = 0; j < weekDays.length; ++j) {
                 Button button = new Button();
-                button.setFont(Font.font("Verdana", sizeX / 25));
+                button.setFont(Font.font("Verdana", sizeX / 20));
                 button.setTextFill(j > 4 ? Color.RED : Color.BLACK);
                 button.setAlignment(Pos.CENTER);
                 button.setPrefSize(sizeX / 7, sizeY / 7);
@@ -153,19 +150,11 @@ public class CalendarWidget extends GridPane {
             }
         }
 
-        int daysAmount = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
-        int start = weekDay == 1 ? weekDay + 4 : weekDay - 3;
         int i = 0;
-
-        calendar = Calendar.getInstance();
-        int day = year == calendar.get(Calendar.YEAR) &&
-                month == calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("en")) ?
-                calendar.get(Calendar.DAY_OF_MONTH) : -1;
 
         for (Button button : buttonArrayList) {
             if (i == day + 1) {
-                button.setFont(Font.font("Verdana", FontWeight.BOLD, sizeX / 25));
+                button.setStyle("-fx-border-color: green");
                 button.setTextFill(Color.GREEN);
             }
 
