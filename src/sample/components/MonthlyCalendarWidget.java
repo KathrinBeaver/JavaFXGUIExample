@@ -18,8 +18,8 @@ import java.util.Locale;
 public class MonthlyCalendarWidget extends GridPane {
     private final int year;
     private final String month;
-    private final double sizeX;
-    private final double sizeY;
+    private final float sizeX;
+    private final float sizeY;
     private final String[] weekDays;
 
     public MonthlyCalendarWidget() {
@@ -68,7 +68,7 @@ public class MonthlyCalendarWidget extends GridPane {
         init();
     }
 
-    public MonthlyCalendarWidget(int year, String month, double sizeX) {
+    public MonthlyCalendarWidget(int year, String month, float sizeX) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -78,7 +78,7 @@ public class MonthlyCalendarWidget extends GridPane {
         init();
     }
 
-    public MonthlyCalendarWidget(int year, String month, double sizeX, boolean isRu) {
+    public MonthlyCalendarWidget(int year, String month, float sizeX, boolean isRu) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -89,7 +89,7 @@ public class MonthlyCalendarWidget extends GridPane {
         init();
     }
 
-    public MonthlyCalendarWidget(int year, String month, double sizeX, double sizeY) {
+    public MonthlyCalendarWidget(int year, String month, float sizeX, float sizeY) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -99,7 +99,7 @@ public class MonthlyCalendarWidget extends GridPane {
         init();
     }
 
-    public MonthlyCalendarWidget(int year, String month, double sizeX, double sizeY, boolean isRu) {
+    public MonthlyCalendarWidget(int year, String month, float sizeX, float sizeY, boolean isRu) {
         this.year = year;
         this.month = month;
         this.sizeX = sizeX;
@@ -111,7 +111,8 @@ public class MonthlyCalendarWidget extends GridPane {
     }
 
     private void init() {
-        String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        String[] months = new String[]{"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
         ArrayList<Button> buttonArrayList = new ArrayList<>();
 
         Calendar calendar = Calendar.getInstance();
@@ -122,7 +123,7 @@ public class MonthlyCalendarWidget extends GridPane {
 
         calendar = Calendar.getInstance();
         int day = year == calendar.get(Calendar.YEAR) &&
-                month == calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("en")) ?
+                month.equals(calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("en"))) ?
                 calendar.get(Calendar.DAY_OF_MONTH) : -2;
 
         this.setPrefSize(sizeX, sizeY);
@@ -159,7 +160,7 @@ public class MonthlyCalendarWidget extends GridPane {
             }
 
             if (i > start && daysAmount >= -start) {
-                button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         onButtonAction(button, month, year);
@@ -187,11 +188,11 @@ public class MonthlyCalendarWidget extends GridPane {
         return month;
     }
 
-    public double getSizeX() {
+    public float getSizeX() {
         return sizeX;
     }
 
-    public double getSizeY() {
+    public float getSizeY() {
         return sizeY;
     }
 }
