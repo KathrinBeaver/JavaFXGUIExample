@@ -11,8 +11,8 @@ import java.util.Calendar;
 
 public class YearlyCalendarWidget extends GridPane {
     private final int year;
-    private final int sizeX;
-    private final int sizeY;
+    private final float sizeX;
+    private final float sizeY;
 
     public YearlyCalendarWidget() {
         Calendar calendar = Calendar.getInstance();
@@ -32,7 +32,7 @@ public class YearlyCalendarWidget extends GridPane {
         init();
     }
 
-    public YearlyCalendarWidget(int year, int sizeX) {
+    public YearlyCalendarWidget(int year, float sizeX) {
         this.year = year;
         this.sizeX = sizeX;
         this.sizeY = sizeX / 3 * 4;
@@ -40,7 +40,7 @@ public class YearlyCalendarWidget extends GridPane {
         init();
     }
 
-    public YearlyCalendarWidget(int year, int sizeX, int sizeY) {
+    public YearlyCalendarWidget(int year, float sizeX, float sizeY) {
         this.year = year;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
@@ -49,7 +49,8 @@ public class YearlyCalendarWidget extends GridPane {
     }
 
     private void init() {
-        String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        String[] months = new String[]{"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
 
         this.setGridLinesVisible(true);
 
@@ -58,7 +59,8 @@ public class YearlyCalendarWidget extends GridPane {
                 Label label = new Label(months[i * 3 + j]);
                 label.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
 
-                MonthlyCalendarWidget monthlyCalendarWidget = new MonthlyCalendarWidget(year, months[i * 3 + j], sizeX / 3, sizeY / 4);
+                MonthlyCalendarWidget monthlyCalendarWidget =
+                        new MonthlyCalendarWidget(year, months[i * 3 + j], sizeX / 3, sizeY / 4);
 
                 VBox vBox = new VBox(label, monthlyCalendarWidget);
                 vBox.setAlignment(Pos.CENTER);
@@ -72,11 +74,11 @@ public class YearlyCalendarWidget extends GridPane {
         return year;
     }
 
-    public int getSizeX() {
+    public float getSizeX() {
         return sizeX;
     }
 
-    public int getSizeY() {
+    public float getSizeY() {
         return sizeY;
     }
 }
